@@ -1,0 +1,88 @@
+//HTTP is a hyper text transfer protocol which is used to transfer web pages to client who send you request
+//create a http server using node.js
+// const http = require('http');
+// const fs = require('fs');
+// const path = require('path');
+/*path.join functionalities
+/project
+  |- chat_app
+      |- index.js
+  |- u.html
+  const path = require('path');
+
+  // Go up one level from chat_app to project, then access u.html
+  const filePath = path.resolve(__dirname, '..', 'u.html');
+  __dirname: Represents the directory of index.js (/project/chat_app).
+'..': Indicates going up one level to /project.
+'u.html': Specifies the file u.html in the parent directory (/project).*/
+
+// const server = http.createServer((req, res) => {
+//     if (req.url == '/') {
+        
+//         const filepath = path.join(__dirname, 'u.html');
+//         console.log(filepath);
+        
+//         fs.readFile(filepath, (err, data) => {
+     
+//             if (err) {
+//                 console.error('Error reading file:', err);
+//                 res.statusCode = 500;
+//                 res.setHeader('Content-Type', 'text/plain');
+               /*headers could be application/json,image/jpeg,text/plain depending on what type of content we are sending to client*/
+//                 res.end('Internal Server Error');
+//             } else {
+//                 res.statusCode = 200;
+//                 //this html content will render by browser and show data to clent not code
+//                 res.setHeader('Content-Type', 'text/html');
+
+//                 res.end(data);
+//             }
+//         });
+//     }
+// });
+
+// server.listen(8000, () => {
+//     console.log('Server is running on port 8000');
+// });
+
+
+//this can be done using express framework as well
+/*
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+    const filePath = path.join(__dirname, 'u.html');
+    
+    fs.readFile(filePath, (err, data) => {
+        if (err) {
+            console.error('Error reading u.html:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            res.setHeader('Content-Type', 'text/html');
+            res.send(data);
+        }
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}/`);
+});
+*/
+
+
+/*but how express is creating http server this can be the question
+actually when we write const app=express() it means we are creating an instance of express application which can be used as request listeners(app.listen) or so many things like route handling(get,post);
+and when we write app.listen(port) basically at that time express creates an http server implicitly.
+so basically app.listen(port,()=>{}) is equivalent to code 
+let server=http.createserver(app); it means server is using app as a listener
+then server.listen(port,()=>{});*/
+/*so we can say app is not an http server and socketIO need an http server to estabilish same http server connection with express.
+so we write 
+let socketIO=require('socket.io');
+let server=http.createServer(app);
+let i0=socketIO(server);*/
