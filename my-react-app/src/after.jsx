@@ -7,7 +7,7 @@ export default function After(props) {
   const { name, id, socket } = props;
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
-  var audio=new Audio('notify.mp3');
+ 
 
   useEffect(() => {
     const newUserJoinedHandler = (data) => {

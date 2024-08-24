@@ -4,9 +4,9 @@ import App from './App';
 import './index.css';
 
 import io from 'socket.io-client';
-const ENDPOINT='http://localhost:8000/';
+const ENDPOINT="http://localhost:8000/";
 
-const socket = io(ENDPOINT,{transports:['websocket']});
+const socket = io(ENDPOINT,{ transports: ['websocket'] });
 
 ReactDOM.render(
   <>
