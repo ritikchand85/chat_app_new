@@ -4,7 +4,7 @@ import App from './App';
 import './index.css';
 
 import io from 'socket.io-client';
-const ENDPOINT="http://localhost:8000/";
+const ENDPOINT="https://chat-app-new-a7tz.onrender.com/";
 
 const socket = io(ENDPOINT,{ transports: ['websocket'] });
 
